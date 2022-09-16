@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
-project(udemy_course_1)
+project(udemy_cpp_course_1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(udemy_course_1 section5-module42/main.cpp)
+add_executable(udemy_course_1 section6-module51/main.cpp)
