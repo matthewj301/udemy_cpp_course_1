@@ -3,4 +3,4 @@ project(udemy_course_1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(udemy_course_1 main.cpp)
+add_executable(udemy_course_1 section5-module42/main.cpp)
