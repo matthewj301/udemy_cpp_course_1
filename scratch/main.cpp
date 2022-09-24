@@ -3,13 +3,13 @@
 using namespace std;
 
 int main() {
-    double  a = 100;
-    int b = 12;
-    int x = b % 3;
-    double  y = a / b;
-    int z = a / b;
-    cout << x << endl;
-    cout << y << endl;
+    int favorite;
+    cout << "Enter your favorite number: ";
+    cin >> favorite;
+    if (favorite == 13)
+        cout << "That my favorite number too!" << endl;
+    cout << "That's amazing!" << endl;
+    cout << "Great minds think alike!" << endl;
 }
 
 
