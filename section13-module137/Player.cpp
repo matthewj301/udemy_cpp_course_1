@@ -39,3 +39,13 @@ bool Player::is_player_defeated() const {
     return false;
 }
 
+Player::Player() {
+    std::cout << "default settings" << std::endl;
+}
+
+Player::Player(std::string *name) {
+    Player::set_name(*name);
+}
+
+Player::~Player() = default;
+

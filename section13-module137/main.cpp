@@ -7,13 +7,10 @@ using namespace std;
 void print_players(std::vector<Player> &);
 
 int main() {
-    Player matthew;
-    Player enemy;
     string p1 {"Katie"};
     string p2 {"Roomba"};
-
-    matthew.set_name(p1);
-    enemy.set_name(p2);
+    Player matthew {&p1};
+    Player enemy {&p2};
 
     vector<Player> all_players{matthew, enemy};
     if (all_players.size() < 2) {
@@ -50,6 +47,7 @@ int main() {
         defeat_msg += "!";
     }
     std::cout << defeat_msg << std::endl;
+
 
     return 0;
 }

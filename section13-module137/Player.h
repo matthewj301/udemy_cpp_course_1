@@ -9,6 +9,11 @@
 
 class Player {
 public:
+    // constructor
+    Player();
+    Player(std::string *name);
+    // destructor
+    ~Player();
     // methods
     void set_name(std::string &);
     std::string get_name() const;
