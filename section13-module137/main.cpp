@@ -1,75 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <string>
+#include "Player.h"
 using namespace std;
 
 // classes! Which turned into making a little game
-
-bool someone_is_defeated = false;
-
-class Player {
-public:
-    // methods
-    void set_name(string &);
-    string get_name() const;
-    int attack() const;
-    void defend(int attack_strength);
-    int get_health() const;
-    bool is_player_defeated() const;
-    void print_health() const;
-
-private:
-    // attrs
-    string name;
-    int health {100};
-    int xp {1};
-    int attack_str {xp*12};
-};
-
-void Player::set_name(string &local_name) {
-    Player::name = local_name;
-}
-
-string Player::get_name() const {
-    return Player::name;
-}
-
-int Player::attack() const {
-    cout << Player::name << " attacks with " << Player::attack_str << " strength!" << endl;
-    return Player::attack_str;
-}
-
-void Player::defend(int attack_strength) {
-    Player::health -= attack_strength;
-    cout << Player::name << " takes " << attack_strength << " worth of damage. " << endl;
-    Player::print_health();
-    Player::is_player_defeated();
-}
-
-int Player::get_health() const {
-    return Player::health;
-}
-
-void Player::print_health() const {
-    cout << Player::name << " has " << Player::get_health() << " health left!" << endl;
-}
-
-bool Player::is_player_defeated() const {
-    if (Player::get_health() <= 0) {
-        string defeat_msg = "And it looks like " + Player::name + " has been defeated";
-        someone_is_defeated = true;
-        if (Player::get_health() < 0) {
-            defeat_msg += " With overkill!!";
-        } else {
-            defeat_msg += "!";
-        }
-        cout << defeat_msg << endl;
-        return true;
-    }
-    return false;
-}
-
-void print_players(vector<Player> &);
+void print_players(std::vector<Player> &);
 
 int main() {
     Player matthew;
@@ -91,7 +26,8 @@ int main() {
     cout << "The battle between " << matthew.get_name() << " and " << enemy.get_name() << " begins..." << endl;
     enemy.defend(matthew.attack());
 
-    while (!someone_is_defeated) {
+
+    while (!all_players.at(0).is_player_defeated() && !all_players.at(1).is_player_defeated()) {
         int random_attacker = rand() % all_players.size();
         int defender{1};
         if (random_attacker == all_players.size()) {
@@ -99,6 +35,21 @@ int main() {
         }
         all_players.at(defender).defend(all_players.at(random_attacker).attack());
     }
+    Player defeated_player;
+
+    if (all_players.at(0).is_player_defeated()) {
+        defeated_player = all_players.at(0);
+    } else {
+        defeated_player = all_players.at(1);
+    }
+
+    string defeat_msg = "And it looks like " + defeated_player.get_name() + " has been defeated";
+    if (defeated_player.get_health() < 0) {
+        defeat_msg += " With overkill!!";
+    } else {
+        defeat_msg += "!";
+    }
+    std::cout << defeat_msg << std::endl;
 
     return 0;
 }
