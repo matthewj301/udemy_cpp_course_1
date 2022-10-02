@@ -9,11 +9,12 @@
 
 class Player {
 public:
-    // constructor
-    Player();
-    Player(std::string *name);
+    // Constructor with default params
+    Player(std::string name_val = "None", int health_val = 100 , int xp_val = 1);
     // destructor
     ~Player();
+    // copiers
+    Player(const Player &source);
     // methods
     void set_name(std::string &);
     std::string get_name() const;
@@ -26,9 +27,9 @@ public:
 private:
     // attrs
     std::string name;
-    int health {100};
-    int xp {1};
-    int attack_str {xp*12};
+    int health;
+    int xp;
+    int attack_str;
 };
 
 #endif //UDEMY_CPP_COURSE_1_PLAYER_H

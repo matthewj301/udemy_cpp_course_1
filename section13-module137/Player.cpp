@@ -3,6 +3,7 @@
 //
 #include "Player.h"
 
+#include <utility>
 
 void Player::set_name(std::string &local_name) {
     Player::name = local_name;
@@ -38,14 +39,17 @@ bool Player::is_player_defeated() const {
     }
     return false;
 }
+// Constructor initialization lists - more efficient by assigning vals on init, not after init
+// Also, constructor delegation (before defaults)! Can only do this is initalization list, not body.
 
-Player::Player() {
-    std::cout << "default settings" << std::endl;
+Player::Player(std::string name_val, int health_val, int xp)
+        : name{std::move(name_val)}, health{health_val}, xp{xp}, attack_str{xp * 12} {
 }
 
-Player::Player(std::string *name) {
-    Player::set_name(*name);
-}
+// Copier
+Player::Player(const Player &source)
+: name{source.name}, health{source.health}, xp{source.xp}, attack_str{source.attack_str}
+{}
 
 Player::~Player() = default;
 
