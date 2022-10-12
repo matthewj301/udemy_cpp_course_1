@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Pointer tests
+
 int main() {
     int *data = new int[5];
 
