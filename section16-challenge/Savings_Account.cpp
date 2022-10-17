@@ -14,12 +14,7 @@ bool Savings_Account::deposit(double amount) {
 }
 
 bool Savings_Account::withdraw(double amount) {
-    if ((balance - amount) >= 0) {
-        balance -= amount;
-        return true;
-    } else {
-        return false;
-    }
+    return Account::withdraw(amount);
 }
 
 void Savings_Account::print(std::ostream &os) const {
