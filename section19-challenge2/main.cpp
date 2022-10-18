@@ -16,19 +16,23 @@ int main() {
     std::getline(response_file, answer_key);
     std::string line{};
     int line_count{1};
+    int score {0};
     while (std::getline(response_file, line)) {
-        if (line_count % 2 == 0) {
-            int score{0};
+        if (line_count % 2 != 0) {
+            score = 0;
+            std::cout << line << endl;
+        }  else {
             for (int i = 0; i < line.length(); i++) {
+                std::cout << line << endl;
+                std::cout << line.length() << endl;
+                std::cout << answer_key << endl;
                 if (line[i] == answer_key[i]) {
-                    score++;
+                    score = score + 1;
                 }
             }
             std::cout << score << endl;
-        }  else {
-            std::cout << line << endl;
         }
-        line_count ++;
+        line_count++;
     }
     return 0;
 }
