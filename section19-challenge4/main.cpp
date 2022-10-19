@@ -55,10 +55,10 @@ bool copy_file(string &read_filepath, string &destination_filepath) {
     }
     size_t line_number{1};
     string line{};
-    bool start_numbering {false};
+    bool start_numbering{false};
 
     while (getline(in_file, line)) {
-        string formatted_line_num {to_string(line_number) + ": " };
+        string formatted_line_num{to_string(line_number) + ": "};
         if (start_numbering) {
             out_file << setw(6) << formatted_line_num << line << endl;
         } else {
