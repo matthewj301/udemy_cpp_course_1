@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 project(udemy_cpp_course_1)
 
 set(CMAKE_CXX_STANDARD 14)
-add_executable(udemy_course_1 section20-challenge2/main.cpp)
+add_executable(udemy_course_1 section20-challenge3/main.cpp)
 
 find_package(Boost REQUIRED)
 if(Boost_FOUND)
