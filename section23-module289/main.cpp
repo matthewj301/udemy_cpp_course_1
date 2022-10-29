@@ -4,19 +4,19 @@
 #include <iostream>
 #include <vector>
 
-enum State {
+enum class ApplicationState {
     Unknown, Crashed, Ok
 };
 
 int main() {
-    std::vector<State> states{Crashed, Ok, Unknown, Ok, Crashed, Ok};
+    std::vector<ApplicationState> states{ApplicationState::Crashed, ApplicationState::Ok, ApplicationState::Unknown, ApplicationState::Ok, ApplicationState::Crashed, ApplicationState::Ok};
 
     for (auto state: states) {
         switch (state) {
-            case Crashed:
+            case ApplicationState::Crashed:
                 std::cout << "App crashed!" << std::endl;
                 break;
-            case Ok:
+            case ApplicationState::Ok:
                 std::cout << "App Ok" << std::endl;
                 break;
             default:
